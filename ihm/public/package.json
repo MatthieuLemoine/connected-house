@@ -1,0 +1,32 @@
+{
+  "name": "angular-material-express-seed-front",
+  "version": "1.0.0",
+  "description": "A Angular Material and Express seed",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatthieuLemoine/angular-material-express-seed.git"
+  },
+  "keywords": [
+    "angular",
+    "material",
+    "express",
+    "seed"
+  ],
+  "author": "MatthieuLemoine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatthieuLemoine/angular-material-express-seed/issues"
+  },
+  "homepage": "https://github.com/MatthieuLemoine/angular-material-express-seed#readme",
+  "dependencies": {
+    "angular": "^1.4.8",
+    "angular-animate": "^1.4.8",
+    "angular-aria": "^1.4.8",
+    "angular-material": "^1.0.1",
+    "angular-ui-router": "^0.2.15"
+  }
+}

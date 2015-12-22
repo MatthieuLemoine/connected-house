@@ -1,0 +1,12 @@
+{
+  "name": "connected-house-music",
+  "version": "0.0.1",
+  "private": false,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.2.6",
+    "node-deezer": "~0.3.3"
+  }
+}
