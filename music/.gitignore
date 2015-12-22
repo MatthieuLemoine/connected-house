@@ -1,1 +1,4 @@
-conf/deezer_conf.js
+node_modules/
+npm-debug.log
+public/build
+public/css
