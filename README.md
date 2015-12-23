@@ -8,6 +8,14 @@ A open source connected house.
 - Indoor monitoring
 - Lights
 
+## Run
+
+Open 3 terminals
+
+    cd socket & npm start
+    cd panel & npm start
+    cd music & npm start
+
 ## Configuration
 
 ### nginx
