@@ -11,7 +11,6 @@ var express = require('express'),
   http = require('http'),
   app = module.exports = express(),
   path = require('path'),
-  objects = require('./routes/objects'),
   index = require('./routes/index');
 
 /**
@@ -19,7 +18,7 @@ var express = require('express'),
  */
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3002);
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({
   extended : true
@@ -46,9 +45,6 @@ if (env === 'production') {
 
 // serve index and view partials
 app.use('/',index);
-
-// OBJECTS JSON API
-app.use('/objects',objects);
 
 /**
  * Start Server

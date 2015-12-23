@@ -2,28 +2,31 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Angular Material Express Seed</title>
+    <title>Connected House : Web Panel</title>
     <link rel="stylesheet" href="/node_modules/angular-material/angular-material.css"/>
     <link rel="stylesheet" href="/css/app.min.css"/>
   </head>
-  <body ng-app="seed">
-    <div ng-controller="SeedController as SeedVM">
+  <body ng-app="panel">
+    <div ng-controller="PanelController as PanelVM">
       <md-toolbar>
         <div class="md-toolbar-tools">
           <h2>
-          <span>Angular Material Express Seed</span>
+          <span>Connected House : Web Panel</span>
           </h2>
           <span flex></span>
         </div>
       </md-toolbar>
       <md-tabs md-dynamic-height md-border-bottom>
-        <md-tab label="one" ng-click="SeedVM.selectTab(0)">
+        <md-tab label="Home" ng-click="PanelVM.selectTab(0)">
+        </md-tab>
+        <md-tab label="Music" ng-click="PanelVM.selectTab(1)">
         </md-tab>
       </md-tabs>
       <div ui-view></div>
-      <!-- We'll also add some navigation: -->
-      <a ui-sref="objects">Objects</a>
     </div>
+
+    <!-- socket.io client lib -->
+    <script src="node_modules/socket.io-client/socket.io.js"></script>
 
     <!-- Angular depencies -->
     <script src="node_modules/angular/angular.js"></script>
@@ -31,6 +34,7 @@
     <script src="node_modules/angular-aria/angular-aria.min.js"></script>
     <script src="node_modules/angular-material/angular-material.min.js"></script>
     <script src="node_modules/angular-ui-router/build/angular-ui-router.js"></script>
+    <script src="node_modules/angular-socket-io/socket.js"></script>
 
     <!-- Use ES6 branch for ES6 support -->
 

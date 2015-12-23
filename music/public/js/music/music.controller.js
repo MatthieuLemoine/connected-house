@@ -5,14 +5,16 @@
         .module('app.music')
         .controller('MusicController',MusicController);
 
-    MusicController.$inject = ['MusicFactory'];
+    MusicController.$inject = ['MusicFactory','SocketFactory'];
 
-    function MusicController(MusicFactory){
+    function MusicController(MusicFactory,SocketFactory){
         var vm   = this;
         vm.play  = play;
         vm.pause = pause;
 
         initDeezer();
+        // PING Socket server
+        SocketFactory.ping();
 
         //////////
 
@@ -31,10 +33,18 @@
         }
 
         function playerReady(response){
-          DZ.player.playPlaylist(1439725805);
+            // Start player
+            DZ.player.playPlaylist(1439725805);
+
+            // Add listeners to socket events
+            SocketFactory.addNextListener(next);
+            SocketFactory.addPauseListener(pause);
+            SocketFactory.addPlayListener(play);
+            SocketFactory.addPrevListener(previous);
         }
 
         function play(){
+            console.log('play');
             DZ.player.play();
         }
 

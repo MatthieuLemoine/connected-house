@@ -1,8 +1,8 @@
 {
-  "name": "socket.connected-house",
+  "name": "front.panel.connected-house",
   "version": "1.0.0",
-  "description": "A SocketIO server for a connected house",
-  "main": "index.js",
+  "description": "The connected house web panel",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,9 +11,9 @@
     "url": "git+https://github.com/MatthieuLemoine/connected-house.git"
   },
   "keywords": [
-    "socket",
-    "connected",
-    "house"
+    "panel",
+    "home",
+    "connected"
   ],
   "author": "MatthieuLemoine",
   "license": "ISC",
@@ -22,10 +22,12 @@
   },
   "homepage": "https://github.com/MatthieuLemoine/connected-house#readme",
   "dependencies": {
+    "angular": "^1.4.8",
+    "angular-animate": "^1.4.8",
+    "angular-aria": "^1.4.8",
+    "angular-material": "^1.0.1",
+    "angular-socket-io": "^0.7.0",
+    "angular-ui-router": "^0.2.15",
     "socket.io": "^1.3.7"
-  },
-  "scripts": {
-    "prestart": "npm install",
-    "start": "node index.js"
   }
 }

@@ -1,11 +1,11 @@
 {
-  "name": "angular-material-express-seed",
-  "description": "A Angular Material and Express seed",
+  "name": "angular-material-express-panel",
+  "description": "A Angular Material and Express panel",
   "version": "1.0.0",
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MatthieuLemoine/angular-material-express-seed.git"
+    "url": "git+https://github.com/MatthieuLemoine/angular-material-express-panel.git"
   },
   "dependencies": {
     "body-parser": "^1.0.2",
@@ -18,7 +18,7 @@
   "scripts": {
     "postinstall": "cd public/ && npm install && cd -",
     "prestart": "npm install",
-    "start": "node server.js"
+    "start": " gulp & node server.js &"
   },
   "devDependencies": {
     "gulp": "^3.9.0",

@@ -1,9 +1,9 @@
-# Angular Material Express Seed
+# Angular Material Express Panel
 
-A seed for Angular Material using Express.
-This seed tries to follow some of the rules of John Papa's [angular-styleguide](https://github.com/johnpapa/angular-styleguide).
+A panel for Angular Material using Express.
+This panel tries to follow some of the rules of John Papa's [angular-styleguide](https://github.com/johnpapa/angular-styleguide).
 
-This awesome seed uses a bunch of great tools and technologies such as :
+This awesome panel uses a bunch of great tools and technologies such as :
 
 <ul>
     <li>Angular</li>
@@ -25,11 +25,11 @@ Gulp is required to build AMES :
 
 Clone the repository :
 
-    git clone git@github.com:/MatthieuLemoine/angular-material-express-seed.git
+    git clone git@github.com:/MatthieuLemoine/angular-material-express-panel.git
 
 Install the dependencies :
 
-    cd angular-material-express-seed && npm install
+    cd angular-material-express-panel && npm install
 
 ## Run
 
@@ -45,10 +45,10 @@ To use Livereload you need to install the Livereload extension for your browser.
 
 ## ES6 Support
 
-This seed uses babel to enable browser ES6 support.
+This panel uses babel to enable browser ES6 support.
 To use AMES with ES6 you need to use the ES6 branch.
 
-    git clone -b es6 git@github.com:/MatthieuLemoine/angular-material-express-seed.git
+    git clone -b es6 git@github.com:/MatthieuLemoine/angular-material-express-panel.git
 
 
 ## John Papa compliance
@@ -69,7 +69,7 @@ Modules :
 
 Controllers / Avoid using $scope :
 
-    This seed uses the "controllerAs View" syntax in index.html and templates/objects.html
+    This panel uses the "controllerAs View" syntax in index.html and templates/objects.html
     and the "controllerAs with vm" syntax in boths controllers.
 
 Bindable Members Up Top
