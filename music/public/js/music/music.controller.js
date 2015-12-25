@@ -9,8 +9,6 @@
 
     function MusicController(MusicFactory,SocketFactory){
         var vm   = this;
-        vm.play  = play;
-        vm.pause = pause;
 
         initDeezer();
         // PING Socket server

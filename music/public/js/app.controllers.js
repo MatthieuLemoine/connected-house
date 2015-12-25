@@ -9,19 +9,7 @@
 
     function AppController($location){
         var vm       = this;
-        vm.selectTab = selectTab;
 
         ////////////
-
-        function selectTab(index){
-            switch (index){
-                case 0:
-                    $location.url('/music');
-                    break;
-                default:
-                    $location.url('/music');
-                    break;
-            }
-        }
     }
 })();

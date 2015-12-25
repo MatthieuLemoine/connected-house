@@ -3,10 +3,32 @@ A open source connected house.
 
 ## Functionnalities
 
-- Music player : Deezer API / Spotify API / Volumino
+- Music player : Deezer API / Spotify API
 - Indoor camera
 - Indoor monitoring
 - Lights
+
+## Technologies
+
+This project uses a bunch of great tools and technologies such as :
+
+- [node.js](http://nodejs.org/)
+- [nw.js](https://github.com/nwjs/nw.js)
+- [Angular](https://angularjs.org/)
+- [Angular Material](https://material.angularjs.org/)
+- [socket.io](http://socket.io/)
+- [gulp](http://gulpjs.com/)
+- [sass](http://sass-lang.com/)
+
+I used this [seed](https://github.com/MatthieuLemoine/angular-material-express-seed.git) to bootstrap my apps.
+
+## Install
+
+These apps require [nw.js](https://github.com/nwjs/nw.js) to be used as desktop app.
+
+- Install nw.js
+- Install gulp `npm install -g gulp`
+- Install nginx `sudo apt-get install nginx` or apache to create VHosts (optionnal)
 
 ## Run
 

@@ -4,7 +4,8 @@
   "description": "The connected house web panel",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nw ."
   },
   "repository": {
     "type": "git",
@@ -30,5 +31,15 @@
     "angular-ui-router": "^0.2.15",
     "socket.io": "^1.3.7",
     "socket.io-client": "^1.3.7"
+  },
+  "webkit": {
+    "plugin": true
+  },
+  "window": {
+    "title": "Connected House : Administration",
+    "icon": "panel.png",
+    "toolbar": false,
+    "frame": true,
+    "position": "center"
   }
 }
