@@ -18,7 +18,7 @@
   "scripts": {
     "postinstall": "cd public/ && npm install && cd -",
     "prestart": "npm install",
-    "start": " gulp & node server.js &"
+    "start": "cd public/ && npm start && cd -"
   },
   "devDependencies": {
     "gulp": "^3.9.0",

@@ -1,0 +1,7 @@
+{
+  "name": "connected-house-mobile-panel",
+  "private": "false",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.2.1"
+  }
+}
