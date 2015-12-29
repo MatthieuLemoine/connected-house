@@ -38,7 +38,7 @@
   "window": {
     "title": "Connected House : Music App",
     "icon": "music.png",
-    "toolbar": false,
+    "toolbar": true,
     "frame": true,
     "position": "center"
   }

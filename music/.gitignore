@@ -2,3 +2,4 @@ node_modules/
 npm-debug.log
 public/build
 public/css
+deezer.conf.js

@@ -5,10 +5,11 @@
         .module('app.music')
         .controller('MusicController',MusicController);
 
-    MusicController.$inject = ['MusicFactory','SocketFactory'];
+    MusicController.$inject = ['MusicFactory','SocketFactory','DeezerUser'];
 
-    function MusicController(MusicFactory,SocketFactory){
+    function MusicController(MusicFactory,SocketFactory,DeezerUser){
         var vm   = this;
+        vm.DeezerUser = DeezerUser;
 
         initDeezer();
         // PING Socket server
@@ -16,18 +17,19 @@
 
         //////////
 
-        function initDeezer(){
-            DZ.init({
-              appId : '170161',
-              channelUrl : 'http://music.connected.house/channel.html',
-              player: {
-                container: 'player',
-                width : 400,
-                height : 100,
-                onload : playerReady
-              }
+        function afterLogin(authResponse){
+            console.log(authResponse);
+            MusicFactory.getPlaylists(function(err){
+                if(err)
+                    console.log(err);
             });
+        }
 
+        function initDeezer(){
+            MusicFactory.init(playerReady);
+            MusicFactory.login().then(afterLogin).error(function(err){
+                console.log('Error on login :',err);
+            });
         }
 
         function playerReady(response){

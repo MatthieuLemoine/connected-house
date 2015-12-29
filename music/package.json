@@ -17,7 +17,6 @@
   },
   "scripts": {
     "postinstall": "cd public/ && npm install && cd -",
-    "prestart": "npm install",
     "start": "cd public/ && npm start && cd -"
   },
   "devDependencies": {
