@@ -118,12 +118,32 @@
         .module('panel.music')
         .controller('HomeController',HomeController);
 
-    HomeController.$inject = [];
+    HomeController.$inject = ['SocketFactory'];
 
-    function HomeController(){
+    function HomeController(SocketFactory){
         var vm   = this;
+        vm.sendWol = sendWol;
+        vm.error = {
+            wol: {}
+        };
+        vm.wol = {
+            computer : {}
+        };
 
+        SocketFactory.ping();
+        
         //////////
+
+        function sendWol(){
+            console.log('sendWol');
+            if(vm.wol.computer.name){
+                SocketFactory.sendWol(vm.wol.computer.name);
+                vm.error.wol = {};
+            }
+            else{
+                vm.error.wol.required = 'Computer name is required';
+            }
+        }
 
     }
 })();
@@ -185,10 +205,15 @@
 
     function SocketFactory(socketFactory){
         var PING_EVENT  = 'connected-house.ping';
+        // Music events
         var NEXT_EVENT  = 'connected-house.music.next';
         var PAUSE_EVENT = 'connected-house.music.pause';
         var PLAY_EVENT  = 'connected-house.music.play';
         var PREV_EVENT  = 'connected-house.music.prev';
+
+        // Wol events
+        var WOL_EVENT = 'connected-house.wol';
+        var WOL_SUCCESS_EVENT = 'connected-house.wol.success';
 
         var socket = socketFactory({
             ioSocket: io.connect('http://socket.connected.house/')
@@ -202,7 +227,8 @@
             musicPlay : musicPlay,
             musicPrev : musicPrev,
             ping : ping,
-            send : send
+            send : send,
+            sendWol : sendWol
         };
 
         //////////
@@ -273,6 +299,21 @@
 
         function send(event,message,callback){
             socket.emit(event,message,callback);
+        }
+
+        function sendWol(computerName){
+            console.log('send wol to',computerName);
+            socket.emit(
+                WOL_EVENT,
+                {
+                    computer : {
+                        name : computerName
+                    }
+                },
+                function(err){
+                    console.log(err);
+                }
+            );
         }
 
     }

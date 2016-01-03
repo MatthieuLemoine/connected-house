@@ -2,11 +2,16 @@
 var app = require('http').createServer(handler);
 var io = require('socket.io')(app);
 var fs = require('fs');
+var wol = require('wake_on_lan');
+var conf = require('./conf');
 
 // EVENTS
 const APP_NAMESPACE = 'connected-house.';
 const PING = APP_NAMESPACE + 'ping';
 const HELLO = APP_NAMESPACE + 'hello';
+// Wake on lan event
+const WOL = APP_NAMESPACE + 'wol';
+const SUCCESS_WOL = APP_NAMESPACE + 'wol.success';
 
 // MUSIC EVENTS
 const MUSIC_NAMESPACE = APP_NAMESPACE + 'music.';
@@ -35,6 +40,23 @@ io.on('connection', function (socket) {
   socket.emit(HELLO, { msg: 'Hello World !' });
   socket.on(PING, function (data) {
     console.log('PING received');
+  });
+  socket.on(WOL,function(data){
+    console.log('WOL received',data);
+    if(data.computer){
+      var name = data.computer.name;
+      var computer = conf.computers.get(name);
+      if(computer){
+        wol.wake(computer.mac, function(error) {
+          if (error) {
+            console.log('Error sending magic packet to',name);
+          } else {
+            console.log('Done sending magic packet to',name);
+            socket.broadcast.emit(SUCCESS_WOL,{ msg: name+' has been started' });
+          }
+        });
+      }
+    }
   });
   socket.on(MUSIC_PLAYER_PLAY,function(data){
     console.log('Broadcast play music command');

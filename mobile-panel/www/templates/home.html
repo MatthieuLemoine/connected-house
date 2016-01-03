@@ -1,2 +1,17 @@
 <div ng-controller="HomeController as HomeVM">
+  <md-content layout-padding>
+    <section>
+      <md-subheader class="md-primary">Wake on LAN</md-subheader>
+      <md-input-container>
+        <label>Computer Name</label>
+        <input ng-model="HomeVM.wol.computer.name">
+        <div ng-messages="HomeVM.error.wol">
+          <div ng-message="required">This is required.</div>
+        </div>
+        <md-button class="md-raised md-primary" ng-click="HomeVM.sendWol()">
+            Play
+        </md-button>
+      </md-input-container>
+    </section>
+  </md-content>
 </div>
