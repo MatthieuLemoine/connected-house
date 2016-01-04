@@ -40,6 +40,14 @@ Open 3 terminals
 
 ## Configuration
 
+### DNS records
+
+With dd-wrt :
+
+    address=/socket.connected.house/192.168.1.10
+    address=/music.connected.house/192.168.1.11
+    address=/panel.connected.house/192.168.1.12
+
 ### nginx
 
 I use nginx as a web server to serve my apps.
