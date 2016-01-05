@@ -1,0 +1,8 @@
+#!/bin/bash
+
+gulp remove-proxy
+cordova build --release android
+mv platforms/android/build/outputs/apk/android-debug.apk ./mobile-panel.temp.apk
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ~/Android/keystore.jks mobile-panel.temp.apk keyAlias
+rm -f mobile-panel.apk
+zipalign -v 4 mobile-panel.temp.apk mobile-panel.apk

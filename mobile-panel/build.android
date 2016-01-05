@@ -1,0 +1,7 @@
+#!/bin/bash
+
+gulp remove-proxy
+cordova build android
+mv platforms/android/build/outputs/apk/android-debug.apk ./mobile-panel.temp.apk
+rm -f mobile-panel.apk
+zipalign -v 4 mobile-panel.temp.apk mobile-panel.apk
