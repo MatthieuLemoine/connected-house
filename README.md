@@ -4,9 +4,11 @@ A open source connected house.
 ## Functionnalities
 
 - Music player : Deezer API / Spotify API
+- Wake on LAN
 - Indoor camera
 - Indoor monitoring
 - Lights
+- Mirror : Meteo / News RSS Feed / Agenda / Face recognition(wake up, mood,...) / Heating resistor
 
 ## Technologies
 
