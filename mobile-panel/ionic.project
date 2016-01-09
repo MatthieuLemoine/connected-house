@@ -1,6 +1,6 @@
 {
   "name": "mobile-panel",
-  "app_id": "",
+  "app_id": "7b989b93",
   "gulpStartupTasks": [
     "sass",
     "js",

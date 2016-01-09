@@ -10,6 +10,14 @@
     function PanelController($location){
         var vm       = this;
         vm.selectTab = selectTab;
+        var deploy = new Ionic.Deploy();
+        deploy.setChannel("production");
+
+        deploy.watch().then(function() {}, function() {}, function(hasUpdate) {
+            if(hasUpdate){
+                updateApp();
+            }
+        });
 
         ////////////
 
@@ -26,5 +34,17 @@
                     break;
             }
         }
+
+        function updateApp(){
+            deploy.update().then(function(res) {
+              console.log('Ionic Deploy: Update Success! ', res);
+            }, function(err) {
+              console.log('Ionic Deploy: Update error! ', err);
+            }, function(prog) {
+              console.log('Ionic Deploy: Progress... ', prog);
+            });
+        }
+
+
     }
 })();
