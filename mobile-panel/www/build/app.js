@@ -3,9 +3,12 @@
 
   angular.module('panel', [
     'ionic',
+    'ionic.service.core',
+    'ionic.service.deploy',
     'ui.router',
     'ngMaterial',
     'btford.socket-io',
+    'angular-weather',
     'panel.home',
     'panel.music',
     'panel.socket'
@@ -46,6 +49,7 @@
     function PanelController($location){
         var vm       = this;
         vm.selectTab = selectTab;
+
 
         ////////////
 
@@ -107,6 +111,29 @@
       if(window.StatusBar) {
         StatusBar.styleDefault();
       }
+
+      var deploy = new Ionic.Deploy();
+      deploy.setChannel("production");
+
+      deploy.watch().then(function() {}, function() {}, function(hasUpdate) {
+          console.log('Watch update hasUpdate=',hasUpdate);
+          if(hasUpdate){
+              updateApp();
+          }
+      });
+
+
+      function updateApp(){
+          console.log('UpdateApp');
+          deploy.update().then(function(res) {
+            console.log('Ionic Deploy: Update Success! ', res);
+          }, function(err) {
+            console.log('Ionic Deploy: Update error! ', err);
+          }, function(prog) {
+            console.log('Ionic Deploy: Progress... ', prog);
+          });
+      }
+
     });
   }
 })();
