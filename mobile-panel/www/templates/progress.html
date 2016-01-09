@@ -1,0 +1,13 @@
+<md-dialog ng-controller="ProgressController as ProgressVM" aria-label="Progress"  ng-cloak>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <h2>{{ ProgressVM.opts.title }}</h2>
+        <p>
+          {{ ProgressVM.opts.text }}
+        </p>
+        <div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="determinate" value="{{ProgressVM.opts.progress}}"></md-progress-circular>
+        </div>
+      </div>
+    </md-dialog-content>
+</md-dialog>

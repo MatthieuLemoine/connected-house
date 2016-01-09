@@ -100,9 +100,9 @@
   angular.module('panel')
     .run(PanelRun);
 
-  PanelRun.$inject = ['$ionicPlatform'];
+  PanelRun.$inject = ['$ionicPlatform','ProgressFactory'];
 
-  function PanelRun($ionicPlatform){
+  function PanelRun($ionicPlatform,ProgressFactory){
     $ionicPlatform.ready(function() {
       if(window.cordova && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -126,16 +126,75 @@
       function updateApp(){
           console.log('UpdateApp');
           deploy.update().then(function(res) {
+            ProgressFactory.hideProgress();
             console.log('Ionic Deploy: Update Success! ', res);
           }, function(err) {
+            ProgressFactory.hideProgress();
             console.log('Ionic Deploy: Update error! ', err);
           }, function(prog) {
+            if(prog === 1){
+              ProgressFactory.showProgress('Uploading App','A new version of the Connected House is installing. Please wait...');
+            }
+            ProgressFactory.opts.progress = prog;
             console.log('Ionic Deploy: Progress... ', prog);
           });
       }
 
     });
   }
+})();
+
+(function(){
+    'use strict';
+
+    angular
+        .module('panel')
+        .controller('ProgressController',ProgressController);
+
+    ProgressController.$inject = ['ProgressFactory'];
+
+    function ProgressController(ProgressFactory){
+        var vm   = this;
+        vm.opts = ProgressFactory.opts;
+    }
+})();
+
+
+(function(){
+    'use strict';
+    angular
+        .module('panel')
+        .factory('ProgressFactory',ProgressFactory);
+
+    ProgressFactory.$inject = ['$mdDialog'];
+
+    function ProgressFactory($mdDialog){
+        var opts = {
+                title : 'Progress Dialog',
+                text : 'It\'s a progress dialog',
+                progress : 0
+        };
+
+        return {
+            showProgress : showProgress,
+            hideProgress : hideProgress
+        };
+
+        //////////
+
+        function showProgress(title,text){
+            $mdDialog.show({
+                controller: ProgressController,
+                templateUrl: 'progress.html',
+                parent: angular.element(document.body),
+                clickOutsideToClose:false
+            });
+        }
+
+        function hideProgress(){
+            $mdDialog.hide();
+        }
+    }
 })();
 
 (function(){

@@ -4,9 +4,9 @@
   angular.module('panel')
     .run(PanelRun);
 
-  PanelRun.$inject = ['$ionicPlatform'];
+  PanelRun.$inject = ['$ionicPlatform','ProgressFactory'];
 
-  function PanelRun($ionicPlatform){
+  function PanelRun($ionicPlatform,ProgressFactory){
     $ionicPlatform.ready(function() {
       if(window.cordova && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -30,10 +30,16 @@
       function updateApp(){
           console.log('UpdateApp');
           deploy.update().then(function(res) {
+            ProgressFactory.hideProgress();
             console.log('Ionic Deploy: Update Success! ', res);
           }, function(err) {
+            ProgressFactory.hideProgress();
             console.log('Ionic Deploy: Update error! ', err);
           }, function(prog) {
+            if(prog === 1){
+              ProgressFactory.showProgress('Uploading App','A new version of the Connected House is installing. Please wait...');
+            }
+            ProgressFactory.opts.progress = prog;
             console.log('Ionic Deploy: Progress... ', prog);
           });
       }
