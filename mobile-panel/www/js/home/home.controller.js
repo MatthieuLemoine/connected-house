@@ -5,9 +5,9 @@
         .module('panel.music')
         .controller('HomeController',HomeController);
 
-    HomeController.$inject = ['SocketFactory'];
+    HomeController.$inject = ['SocketFactory','Weather'];
 
-    function HomeController(SocketFactory){
+    function HomeController(SocketFactory,Weather){
         var vm   = this;
         vm.sendWol = sendWol;
         vm.error = {
@@ -16,9 +16,10 @@
         vm.wol = {
             computer : {}
         };
+        vm.apiKey = Weather.openweather.apikey;
 
         SocketFactory.ping();
-        
+
         //////////
 
         function sendWol(){

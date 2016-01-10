@@ -7,3 +7,5 @@ plugins/
 *apk*
 lib/
 .io-config.json
+panel.config.js
+www/build/*
