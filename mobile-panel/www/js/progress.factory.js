@@ -10,11 +10,11 @@
     function ProgressFactory($mdDialog){
         var opts = {
                 title : 'Progress Dialog',
-                text : 'It\'s a progress dialog',
-                progress : 0
+                text : 'It\'s a progress dialog'
         };
 
         return {
+            opts         : opts,
             showProgress : showProgress,
             hideProgress : hideProgress
         };
@@ -23,8 +23,8 @@
 
         function showProgress(title,text){
             $mdDialog.show({
-                controller: ProgressController,
-                templateUrl: 'progress.html',
+                controller: 'ProgressController',
+                templateUrl: 'templates/progress.html',
                 parent: angular.element(document.body),
                 clickOutsideToClose:false
             });
