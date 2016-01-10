@@ -10,7 +10,8 @@
     function ProgressFactory($mdDialog){
         var opts = {
                 title : 'Progress Dialog',
-                text : 'It\'s a progress dialog'
+                text : 'It\'s a progress dialog',
+                isShown : false
         };
 
         return {
@@ -28,10 +29,12 @@
                 parent: angular.element(document.body),
                 clickOutsideToClose:false
             });
+            opts.isShown = true;
         }
 
         function hideProgress(){
             $mdDialog.hide();
+            opts.isShown = false;
         }
     }
 })();
