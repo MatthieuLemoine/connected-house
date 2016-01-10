@@ -13,7 +13,7 @@
         cordova.plugins.Keyboard.disableScroll(true);
       }
       if(window.StatusBar) {
-        StatusBar.styleDefault();
+        StatusBar.hide();
       }
 
       var deploy = new Ionic.Deploy();
