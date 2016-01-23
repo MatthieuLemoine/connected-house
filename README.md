@@ -15,7 +15,7 @@ A open source connected house.
 This project uses a bunch of great tools and technologies such as :
 
 - [node.js](http://nodejs.org/)
-- [nw.js](https://github.com/nwjs/nw.js)
+- [Electron](http://electron.atom.io/)
 - [Angular](https://angularjs.org/)
 - [Angular Material](https://material.angularjs.org/)
 - [socket.io](http://socket.io/)
@@ -26,9 +26,6 @@ I used this [seed](https://github.com/MatthieuLemoine/angular-material-express-s
 
 ## Install
 
-These apps require [nw.js](https://github.com/nwjs/nw.js) to be used as desktop app.
-
-- Install nw.js
 - Install gulp `npm install -g gulp`
 - Install nginx `sudo apt-get install nginx` or apache to create VHosts (optionnal)
 

@@ -12,7 +12,7 @@
     $stateProvider
       .state('music', {
         url: '/music',
-        templateUrl: 'templates/music.html'
+        templateUrl: 'music.html'
       });
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/music');

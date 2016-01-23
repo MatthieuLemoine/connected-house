@@ -9,13 +9,13 @@ var livereload = require('gulp-livereload');
 
 var config = {
     scripts : [
-        './public/js/**/*.module.js',
-        './public/js/**/*.js'
+        './js/**/*.module.js',
+        './js/**/*.js'
     ],
     sass: './scss/**/*.scss',
-    css: './public/css/',
-    html: './public/**/*.html',
-    dest: './public/build/',
+    css: './css/',
+    html: './**/*.html',
+    dest: './build/',
     minJs: 'app.min.js',
     fatJS: 'app.js'
 };

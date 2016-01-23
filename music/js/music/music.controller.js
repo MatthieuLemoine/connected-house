@@ -27,9 +27,7 @@
 
         function initDeezer(){
             MusicFactory.init(playerReady);
-            MusicFactory.login().then(afterLogin).error(function(err){
-                console.log('Error on login :',err);
-            });
+            MusicFactory.login().then(afterLogin);
         }
 
         function playerReady(response){

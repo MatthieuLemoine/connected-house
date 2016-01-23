@@ -8,7 +8,7 @@
 
     function MusicFactory($http,$q,DeezerConf,DeezerUser){
         console.log(DeezerConf);
-
+        console.log(DeezerConf.app_id);
         return {
             getPlaylists : getPlaylists,
             init : init,
@@ -19,6 +19,7 @@
 
         function init(callback){
             return $q(function(resolve,reject){
+                console.log(DeezerConf);
                 DZ.init({
                   appId : DeezerConf.app_id,
                   channelUrl : DeezerConf.channelUrl,
@@ -50,7 +51,6 @@
                         reject('Error : user cancelled login');
                 	}
                 }, {perms: DeezerConf.perms});
-
             });
         }
 
