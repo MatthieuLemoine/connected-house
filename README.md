@@ -43,9 +43,9 @@ Open 3 terminals
 
 With dd-wrt :
 
-    address=/socket.connected.house/192.168.1.10
+    address=/socket.connected.house/192.168.1.12
     address=/music.connected.house/192.168.1.11
-    address=/panel.connected.house/192.168.1.12
+    address=/panel.connected.house/192.168.1.10
 
 ### nginx
 

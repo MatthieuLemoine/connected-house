@@ -6,6 +6,7 @@ This app is an Electron app, to be used on Raspberry Pi with a HifiBerry DAC, pl
 
 ## Install
 
+    npm install -g electron-prebuilt
     npm install
 
 Create a js/music/deezer.conf.js using js/music/deezer.conf.sample.js
