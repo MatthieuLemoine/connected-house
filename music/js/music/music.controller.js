@@ -5,9 +5,9 @@
         .module('app.music')
         .controller('MusicController',MusicController);
 
-    MusicController.$inject = ['MusicFactory','SocketFactory','DeezerUser'];
+    MusicController.$inject = ['MusicFactory','SocketFactory','DeezerUser','DeezerConf'];
 
-    function MusicController(MusicFactory,SocketFactory,DeezerUser){
+    function MusicController(MusicFactory,SocketFactory,DeezerUser,DeezerConf){
         var vm   = this;
         vm.DeezerUser = DeezerUser;
 
