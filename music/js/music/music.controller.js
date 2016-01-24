@@ -27,7 +27,7 @@
         function initDeezer(){
             DeezerUser.access_token = DeezerConf.default_access_token;
             MusicFactory.init(playerReady);
-            //MusicFactory.login().then(afterLogin);
+            MusicFactory.login().then(afterLogin);
             afterLogin();
         }
 
