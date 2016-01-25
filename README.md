@@ -1,6 +1,12 @@
 # connected-house
 A open source connected house.
 
+## Screens
+
+- Music player
+
+![music_player](https://cloud.githubusercontent.com/assets/8517072/12561916/b4881d1c-c3a2-11e5-8c52-483bfcefc87f.png)
+
 ## Functionnalities
 
 - Music player : Deezer API / Spotify API
