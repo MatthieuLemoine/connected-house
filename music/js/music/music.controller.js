@@ -82,12 +82,12 @@
 
         function onTrackChange(track,evt_name){
           console.log("Currently playing track", track);
-          SocketFactory.emit(TRACK_EVENT,track);
+          SocketFactory.send(TRACK_EVENT,track);
         }
 
         function onTrackListChange(){
           console.log("Track list has changed", track);
-          SocketFactory.emit(TRACK_LIST_EVENT,DZ.player.getTrackList());
+          SocketFactory.send(TRACK_LIST_EVENT,DZ.player.getTrackList());
         }
     }
 })();

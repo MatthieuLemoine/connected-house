@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prestart": "npm install",
-    "start": "node index.js"
+    "start": "forever start -l socket.log index.js"
   },
   "repository": {
     "type": "git",
