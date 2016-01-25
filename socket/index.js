@@ -20,6 +20,10 @@ const MUSIC_PLAYER_PLAY = MUSIC_NAMESPACE + 'play';
 const MUSIC_PLAYER_PAUSE = MUSIC_NAMESPACE + 'pause';
 const MUSIC_PLAYER_NEXT = MUSIC_NAMESPACE + 'next';
 const MUSIC_PLAYER_PREV = MUSIC_NAMESPACE + 'prev';
+const MUSIC_PLAYER_VOL_UP = MUSIC_NAMESPACE + 'vol.up';
+const MUSIC_PLAYER_VOL_DOWN = MUSIC_NAMESPACE + 'vol.down';
+const MUSIC_PLAYER_TRACK = MUSIC_NAMESPACE + 'track';
+const MUSIC_PLAYER_TRACKLIST = MUSIC_NAMESPACE + 'tracklist';
 
 app.listen(3003);
 
@@ -59,19 +63,27 @@ io.on('connection', function (socket) {
     }
   });
   socket.on(MUSIC_PLAYER_PLAY,function(data){
-    console.log('Broadcast play music command');
     socket.broadcast.emit(MUSIC_PLAYER_PLAY,{ msg: 'Play music please' });
   });
   socket.on(MUSIC_PLAYER_PAUSE,function(data){
-    console.log('Broadcast pause music command');
     socket.broadcast.emit(MUSIC_PLAYER_PAUSE,{ msg: 'Pause music please' });
   });
   socket.on(MUSIC_PLAYER_NEXT,function(data){
-    console.log('Broadcast next music command');
     socket.broadcast.emit(MUSIC_PLAYER_NEXT,{ msg: 'Next track please' });
   });
   socket.on(MUSIC_PLAYER_PREV,function(data){
-    console.log('Broadcast prev music command');
     socket.broadcast.emit(MUSIC_PLAYER_PREV,{ msg: 'Prev track please' });
+  });
+  socket.on(MUSIC_PLAYER_VOL_UP,function(data){
+    socket.broadcast.emit(MUSIC_PLAYER_VOL_UP,{ msg: 'Vol up please' });
+  });
+  socket.on(MUSIC_PLAYER_VOL_DOWN,function(data){
+    socket.broadcast.emit(MUSIC_PLAYER_VOL_DOWN,{ msg: 'Vol down please' });
+  });
+  socket.on(MUSIC_PLAYER_TRACK,function(data){
+    socket.broadcast.emit(MUSIC_PLAYER_TRACK,{ msg: data });
+  });
+  socket.on(MUSIC_PLAYER_TRACKLIST,function(data){
+    socket.broadcast.emit(MUSIC_PLAYER_TRACKLIST,{ msg: data });
   });
 });

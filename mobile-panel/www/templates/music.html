@@ -1,14 +1,33 @@
 <div ng-controller="MusicController as MusicVM">
-  <md-button class="md-raised md-primary" ng-click="MusicVM.play()">
-      Play
-  </md-button>
-  <md-button class="md-raised md-warn" ng-click="MusicVM.pause()">
-      Pause
-  </md-button>
-  <md-button class="md-raised md-button" ng-click="MusicVM.previous()">
-      Previous
-  </md-button>
-  <md-button class="md-raised md-hue-1" ng-click="MusicVM.next()">
-      Next
-  </md-button>
+  <div class="row">
+    <p> {{ MusicVM.data.track.title }} of {{ MusicVM.data.track.artist.name }} </p>
+  </div>
+  <div class="row">
+    <md-button class="md-raised md-primary" ng-click="MusicVM.play()">
+        Play
+    </md-button>
+    <md-button class="md-raised md-warn" ng-click="MusicVM.pause()">
+        Pause
+    </md-button>
+    <md-button class="md-raised md-button" ng-click="MusicVM.previous()">
+        Previous
+    </md-button>
+    <md-button class="md-raised md-hue-1" ng-click="MusicVM.next()">
+        Next
+    </md-button>
+    <md-button class="md-icon-button md-primary" ng-click="MusicVM.volUp()">
+        <i class="icon ion-volume-medium"></i>
+    </md-button>
+    <md-button class="md-icon-button md-primary" ng-click="MusicVM.volDown()">
+        <i class="icon ion-volume-low"></i>
+    </md-button>
+  </div>
+  <div class="row">
+    <md-list ng-cloak>
+      <md-subheader class="md-no-sticky">Tracklist</md-subheader>
+      <md-list-item ng-repeat="track in MusicVM.data.tracklist.tracks">
+        <p> {{ MusicVM.data.track.title }} of {{ MusicVM.data.track.artist.name }} </p>
+      </md-list-item>
+    </md-list>
+  </div>
 </div>

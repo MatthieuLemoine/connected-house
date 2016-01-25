@@ -13,6 +13,10 @@
         var PAUSE_EVENT = 'connected-house.music.pause';
         var PLAY_EVENT  = 'connected-house.music.play';
         var PREV_EVENT  = 'connected-house.music.prev';
+        var VOL_DOWN_EVENT = 'connected-house.music.vol.down';
+        var VOL_UP_EVENT = 'connected-house.music.vol.up';
+        var TRACK_EVENT = 'connected-house.music.track';
+        var TRACK_LIST_EVENT = 'connected-house.music.tracklist';
 
         // Wol events
         var WOL_EVENT = 'connected-house.wol';
@@ -25,10 +29,14 @@
 
         return {
             addPingListener : addPingListener,
+            addTrackListener : addTrackListener,
+            addTrackListListener : addTrackListListener,
             musicNext : musicNext,
             musicPause : musicPause,
             musicPlay : musicPlay,
             musicPrev : musicPrev,
+            musicVolDown : musicVolDown,
+            musicVolUp : musicVolUp,
             ping : ping,
             send : send,
             sendWol : sendWol
@@ -38,6 +46,14 @@
 
         function addPingListener(callback){
             socket.addListener(PING_EVENT,callback);
+        }
+
+        function addTrackListListener(callback){
+          socket.addListener(TRACK_LIST_EVENT,callback);
+        }
+
+        function addTrackListener(callback){
+          socket.addListener(TRACK_EVENT,callback);
         }
 
         function musicNext(){
