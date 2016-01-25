@@ -18,8 +18,6 @@
         };
         vm.apiKey = Weather.openweather.apikey;
 
-        SocketFactory.ping();
-
         //////////
 
         function sendWol(){

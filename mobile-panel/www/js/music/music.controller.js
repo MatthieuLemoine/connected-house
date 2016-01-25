@@ -25,6 +25,7 @@
         var vm   = this;
         vm.data = data;
         vm.next  = next;
+        vm.onTrackSelect = onTrackSelect;
         vm.play  = play;
         vm.pause = pause;
         vm.previous  = previous;
@@ -32,7 +33,6 @@
         vm.volUp = volUp;
         vm.volMute = volMute;
 
-        SocketFactory.ping();
         SocketFactory.needUpdatePlayer();
         SocketFactory.addTrackListener(onTrackChange);
         SocketFactory.addTrackListListener(onTrackListChange);
@@ -46,50 +46,44 @@
         }
 
         function onTrackChange(track){
-          // TODO update track
-          console.log(track);
           data.item = track.msg;
         }
 
         function onTrackListChange(tracklist){
-          // TODO update tracklist
-          console.log(tracklist);
           data.tracklist = tracklist.msg;
         }
+
+        function onTrackSelect(track_selected,index){
+            var track = {
+                track : track_selected,
+                index : index
+            };
+            SocketFactory.setTrack(track);
+            return false;
+        }
+
         function pause(){
-            SocketFactory.musicPause(function onPause(err){
-                console.log(err);
-            });
+            SocketFactory.musicPause();
         }
 
         function play(){
-            SocketFactory.musicPlay(function onPlay(err){
-                console.log(err);
-            });
+            SocketFactory.musicPlay();
         }
 
         function previous(){
-            SocketFactory.musicPrev(function onPrevious(err){
-                console.log(err);
-            });
+            SocketFactory.musicPrev();
         }
 
         function volDown(){
-          SocketFactory.musicVolDown(function onVolDown(err){
-              console.log(err);
-          });
+          SocketFactory.musicVolDown();
         }
 
         function volMute(){
-            SocketFactory.musicVolMute(function onVolMute(err){
-                console.log(err);
-            });
+            SocketFactory.musicVolMute();
         }
 
         function volUp(){
-          SocketFactory.musicVolUp(function onVolUp(err){
-              console.log(err);
-          });
+          SocketFactory.musicVolUp();
         }
     }
 })();

@@ -1,8 +1,12 @@
 <div ng-controller="MusicController as MusicVM">
-  <div class="row">
-    <p> {{ MusicVM.data.item.track.title }} of {{ MusicVM.data.item.track.artist.name }} </p>
-  </div>
-  <div class="row">
+  <md-card>
+    <md-card-title>
+      <md-card-title-text class="track">
+        <span class="md-headline">{{ MusicVM.data.item.track.title }}</span>
+        <span class="md-subhead">{{ MusicVM.data.item.track.artist.name }}</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-actions layout="row" layout-align="center center">
       <md-button class="md-icon-button md-primary" ng-click="MusicVM.previous()">
           <i class="material-icons">skip_previous</i>
       </md-button>
@@ -15,24 +19,30 @@
       <md-button class="md-icon-button md-primary" ng-click="MusicVM.next()">
           <i class="material-icons">skip_next</i>
       </md-button>
-    </div>
-  <div class="row">
-    <md-button class="md-icon-button md-primary" ng-click="MusicVM.volUp()">
-        <i class="material-icons">volume_up</i>
-    </md-button>
-    <md-button class="md-icon-button md-primary" ng-click="MusicVM.volDown()">
-        <i class="material-icons">volume_down</i>
-    </md-button>
-    <md-button class="md-icon-button md-primary" ng-click="MusicVM.volMute()">
-        <i class="material-icons">volume_mute</i>
-    </md-button>
-  </div>
-  <div class="row">
-    <md-list ng-cloak>
-      <md-subheader class="md-no-sticky">Tracklist</md-subheader>
-      <md-list-item ng-repeat="track in MusicVM.data.tracklist">
-        <p> {{ track.artist.name }} : {{ track.title }} </p>
-      </md-list-item>
-    </md-list>
-  </div>
+    </md-card-actions>
+    <md-card-actions layout="row" layout-align="center center">
+      <md-button class="md-icon-button md-primary" ng-click="MusicVM.volUp()">
+          <i class="material-icons">volume_up</i>
+      </md-button>
+      <md-button class="md-icon-button md-primary" ng-click="MusicVM.volDown()">
+          <i class="material-icons">volume_down</i>
+      </md-button>
+      <md-button class="md-icon-button md-primary" ng-click="MusicVM.volMute()">
+          <i class="material-icons">volume_mute</i>
+      </md-button>
+    </md-card-actions>
+  </md-card>
+  <md-card>
+    <md-card-content>
+      <md-list ng-cloak>
+        <md-subheader class="md-no-sticky">Tracklist</md-subheader>
+        <md-list-item ng-repeat="track in MusicVM.data.tracklist" class="md-2-line tracklist-item" ng-class="{ 'tracklist-item-selected': $index == MusicVM.data.item.index }" ng-click="MusicVM.onTrackSelect(track,$index)">
+          <div class="md-list-item-text">
+            <h3>{{ track.title }}</h3>
+            <p>{{ track.artist.name }}</p>
+          </div>
+        </md-list-item>
+      </md-list>
+    </md-card-content>
+  </md-card>
 </div>

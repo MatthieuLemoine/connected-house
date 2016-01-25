@@ -14,8 +14,6 @@
         vm.DeezerUser = DeezerUser;
 
         initDeezer();
-        // PING Socket server
-        SocketFactory.ping();
 
         //////////
 
@@ -26,6 +24,13 @@
           });
         }
 
+        function changeTrack(data){
+            var tracklist = DZ.player.getTrackList().map(function(item){
+                return parseInt(item.id);
+            });
+            DZ.player.playTracks(tracklist,data.index);
+        }
+
         function initDeezer(){
           DeezerUser.access_token = DeezerConf.default_access_token;
           MusicFactory.init(playerReady);
@@ -34,7 +39,11 @@
         }
 
         function needUpdate(){
-            onTrackChange(DZ.player.getCurrentTrack());
+            var track = {
+                index : DZ.player.getCurrentIndex(),
+                track : DZ.player.getCurrentTrack()
+            };
+            onTrackChange(track);
             onTrackListChange();
         }
 
@@ -47,6 +56,7 @@
           DZ.player.playPlaylist(1439725805);
 
           // Add listeners to socket events
+          SocketFactory.addChangeTrackListener(changeTrack);
           SocketFactory.addNextListener(next);
           SocketFactory.addPauseListener(pause);
           SocketFactory.addPlayListener(play);
@@ -101,6 +111,9 @@
 
         function onTrackListChange(){
           console.log("Track list has changed");
+          console.log(DZ.player.getTrackList().map(function(item){
+              return parseInt(item.id);
+          }));
           SocketFactory.send(TRACK_LIST_EVENT,DZ.player.getTrackList());
         }
     }

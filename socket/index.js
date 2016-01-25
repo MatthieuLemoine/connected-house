@@ -16,6 +16,7 @@ const SUCCESS_WOL = APP_NAMESPACE + 'wol.success';
 // MUSIC EVENTS
 const MUSIC_NAMESPACE = APP_NAMESPACE + 'music.';
 const MUSIC_PLAYER_NAMESPACE = MUSIC_NAMESPACE + 'player.';
+const MUSIC_PLAYER_CHANGE_TRACK = MUSIC_NAMESPACE + 'changetrack';
 const MUSIC_PLAYER_NEED_UPDATE = MUSIC_NAMESPACE + 'needupdate';
 const MUSIC_PLAYER_PLAY = MUSIC_NAMESPACE + 'play';
 const MUSIC_PLAYER_PAUSE = MUSIC_NAMESPACE + 'pause';
@@ -64,6 +65,9 @@ io.on('connection', function (socket) {
       }
     }
   });
+  socket.on(MUSIC_PLAYER_CHANGE_TRACK,function(data){
+    socket.broadcast.emit(MUSIC_PLAYER_CHANGE_TRACK,{ msg: data });
+  });
   socket.on(MUSIC_PLAYER_NEED_UPDATE,function(data){
     socket.broadcast.emit(MUSIC_PLAYER_NEED_UPDATE,{ msg: 'Music need update' });
   });
@@ -80,23 +84,18 @@ io.on('connection', function (socket) {
     socket.broadcast.emit(MUSIC_PLAYER_PREV,{ msg: 'Prev track please' });
   });
   socket.on(MUSIC_PLAYER_VOL_UP,function(data){
-    console.log('On vol up');
     socket.broadcast.emit(MUSIC_PLAYER_VOL_UP,{ msg: 'Vol up please' });
   });
   socket.on(MUSIC_PLAYER_VOL_DOWN,function(data){
-    console.log('On vol down');
     socket.broadcast.emit(MUSIC_PLAYER_VOL_DOWN,{ msg: 'Vol down please' });
   });
   socket.on(MUSIC_PLAYER_VOL_MUTE,function(data){
-    console.log('On vol mute');
     socket.broadcast.emit(MUSIC_PLAYER_VOL_MUTE,{ msg: 'Vol mute please' });
   });
   socket.on(MUSIC_PLAYER_TRACK,function(data){
-    console.log('On change track',data);
     socket.broadcast.emit(MUSIC_PLAYER_TRACK,{ msg: data });
   });
   socket.on(MUSIC_PLAYER_TRACKLIST,function(data){
-    console.log('On change tracklist',data);
     socket.broadcast.emit(MUSIC_PLAYER_TRACKLIST,{ msg: data });
   });
 });

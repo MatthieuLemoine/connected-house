@@ -27,3 +27,12 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 md-toolbar div.md-toolbar-tools > h2 {
   color: white;
 }
+.track{
+  text-align: center;
+}
+.tracklist-item:hover{
+  background-color: rgba(158, 158, 158, 0.2);
+}
+.tracklist-item-selected{
+  background-color: rgba(158, 158, 158, 0.2);
+}

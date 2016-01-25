@@ -9,6 +9,7 @@
     function SocketFactory(socketFactory){
         var PING_EVENT  = 'connected-house.ping';
         // Music events
+        var CHANGE_TRACK_EVENT = 'connected-house.music.changetrack';
         var NEED_UPDATE_EVENT = 'connected-house.music.needupdate';
         var NEXT_EVENT  = 'connected-house.music.next';
         var PAUSE_EVENT = 'connected-house.music.pause';
@@ -43,7 +44,8 @@
             needUpdatePlayer : needUpdatePlayer,
             ping : ping,
             send : send,
-            sendWol : sendWol
+            sendWol : sendWol,
+            setTrack : setTrack
         };
 
         //////////
@@ -180,6 +182,18 @@
                     computer : {
                         name : computerName
                     }
+                },
+                function(err){
+                    console.log(err);
+                }
+            );
+        }
+
+        function setTrack(track){
+            socket.emit(
+                CHANGE_TRACK_EVENT,
+                {
+                    data : track
                 },
                 function(err){
                     console.log(err);
