@@ -9,9 +9,11 @@
 
     function ProgressFactory($mdDialog){
         var opts = {
+            dialog : {
                 title : 'Progress Dialog',
                 text : 'It\'s a progress dialog',
                 isShown : false
+            }
         };
 
         return {
@@ -29,12 +31,14 @@
                 parent: angular.element(document.body),
                 clickOutsideToClose:false
             });
-            opts.isShown = true;
+            opts.dialog.title = title;
+            opts.dialog.text = text;
+            opts.dialog.isShown = true;
         }
 
         function hideProgress(){
             $mdDialog.hide();
-            opts.isShown = false;
+            opts.dialog.isShown = false;
         }
     }
 })();

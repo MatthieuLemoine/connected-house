@@ -35,7 +35,7 @@
               ProgressFactory.hideProgress();
               console.log('Ionic Deploy: Update error! ', err);
           }, function(prog) {
-              if(!ProgressFactory.isShown){
+              if(!ProgressFactory.opts.dialog.isShown){
                   ProgressFactory.showProgress('Uploading App','A new version of the Connected House is installing. Please wait...');
               }
               console.log('Ionic Deploy: Progress... ', prog);
