@@ -34,7 +34,10 @@
         }
 
         function playerReady(response){
+          // Subscribe to player events
           DZ.Event.subscribe('current_track', onTrackChange);
+          DZ.Event.subscribe('tracklist_changed', onTrackListChange);
+
           // Start player
           DZ.player.playPlaylist(1439725805);
 
@@ -45,6 +48,7 @@
           SocketFactory.addPrevListener(previous);
           SocketFactory.addVolDownListener(volDown);
           SocketFactory.addVolUpListener(volUp);
+          SocketFactory.addVolMuteListener(volMute);
         }
 
         function play(){
@@ -69,7 +73,11 @@
           if(volume < 0){
             volume = 0;
           }
-          DZ.player.setVolume(volume)
+          DZ.player.setVolume(volume);
+        }
+
+        function volMute(){
+            DZ.player.setMute(!DZ.player.getMute());
         }
 
         function volUp(){
@@ -77,7 +85,7 @@
           if(volume > 100){
             volume = 100;
           }
-          DZ.player.setVolume(volume)
+          DZ.player.setVolume(volume);
         }
 
         function onTrackChange(track,evt_name){
@@ -86,7 +94,7 @@
         }
 
         function onTrackListChange(){
-          console.log("Track list has changed", track);
+          console.log("Track list has changed");
           SocketFactory.send(TRACK_LIST_EVENT,DZ.player.getTrackList());
         }
     }

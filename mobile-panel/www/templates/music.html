@@ -3,23 +3,26 @@
     <p> {{ MusicVM.data.track.title }} of {{ MusicVM.data.track.artist.name }} </p>
   </div>
   <div class="row">
-    <md-button class="md-raised md-primary" ng-click="MusicVM.play()">
-        Play
+    <md-button class="md-icon-button md-primary" ng-click="MusicVM.previous()">
+        <i class="material-icons">skip_previous</i>
     </md-button>
-    <md-button class="md-raised md-warn" ng-click="MusicVM.pause()">
-        Pause
+    <md-button class="md-icon-button md-primary" ng-click="MusicVM.play()">
+        <i class="material-icons">play_arrow</i>
     </md-button>
-    <md-button class="md-raised md-button" ng-click="MusicVM.previous()">
-        Previous
+    <md-button class="md-icon-button md-primary" ng-click="MusicVM.pause()">
+        <i class="material-icons">pause</i>
     </md-button>
-    <md-button class="md-raised md-hue-1" ng-click="MusicVM.next()">
-        Next
+    <md-button class="md-icon-button md-primary" ng-click="MusicVM.next()">
+        <i class="material-icons">skip_next</i>
     </md-button>
     <md-button class="md-icon-button md-primary" ng-click="MusicVM.volUp()">
-        <i class="icon ion-volume-medium"></i>
+        <i class="material-icons">volume_up</i>
     </md-button>
     <md-button class="md-icon-button md-primary" ng-click="MusicVM.volDown()">
-        <i class="icon ion-volume-low"></i>
+        <i class="material-icons">volume_down</i>
+    </md-button>
+    <md-button class="md-icon-button md-primary" ng-click="MusicVM.volMute()">
+        <i class="material-icons">volume_mute</i>
     </md-button>
   </div>
   <div class="row">

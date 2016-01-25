@@ -14,6 +14,7 @@
         var PLAY_EVENT  = 'connected-house.music.play';
         var PREV_EVENT  = 'connected-house.music.prev';
         var VOL_DOWN_EVENT = 'connected-house.music.vol.down';
+        var VOL_MUTE_EVENT = 'connected-house.music.vol.mute';
         var VOL_UP_EVENT = 'connected-house.music.vol.up';
         var TRACK_EVENT = 'connected-house.music.track';
         var TRACK_LIST_EVENT = 'connected-house.music.tracklist';
@@ -36,6 +37,7 @@
             musicPlay : musicPlay,
             musicPrev : musicPrev,
             musicVolDown : musicVolDown,
+            musicVolMute : musicVolMute,
             musicVolUp : musicVolUp,
             ping : ping,
             send : send,
@@ -97,6 +99,42 @@
                 PREV_EVENT,
                 {
                     data : 'Previous track'
+                },
+                function(err){
+                    console.log(err);
+                }
+            );
+        }
+
+        function musicVolDown(){
+            socket.emit(
+                VOL_DOWN_EVENT,
+                {
+                    data : 'Vol down'
+                },
+                function(err){
+                    console.log(err);
+                }
+            );
+        }
+
+        function musicVolMute(){
+            socket.emit(
+                VOL_MUTE_EVENT,
+                {
+                    data : 'Vol mute'
+                },
+                function(err){
+                    console.log(err);
+                }
+            );
+        }
+
+        function musicVolUp(){
+            socket.emit(
+                VOL_UP_EVENT,
+                {
+                    data : 'Vol up'
                 },
                 function(err){
                     console.log(err);

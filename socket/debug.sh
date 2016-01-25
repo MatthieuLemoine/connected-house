@@ -1,3 +1,3 @@
 #!/bin/bash
 
-ssh pi@music.connected.house 'cd ~/connected-house/socket && tail -f socket.log';
+ssh pi@socket.connected.house 'tail -f /home/pi/.forever/socket.log';

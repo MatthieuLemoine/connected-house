@@ -19,7 +19,7 @@
           tracklist : {
             tracks : []
           }
-        }
+      };
         var vm   = this;
         vm.data = data;
         vm.next  = next;
@@ -28,6 +28,7 @@
         vm.previous  = previous;
         vm.volDown   = volDown;
         vm.volUp = volUp;
+        vm.volMute = volMute;
 
         SocketFactory.ping();
         SocketFactory.addTrackListener(onTrackChange);
@@ -74,6 +75,12 @@
           SocketFactory.musicVolDown(function onVolDown(err){
               console.log(err);
           });
+        }
+
+        function volMute(){
+            SocketFactory.musicVolMute(function onVolMute(err){
+                console.log(err);
+            });
         }
 
         function volUp(){
