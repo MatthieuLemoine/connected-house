@@ -9,17 +9,19 @@
 
     function MusicController(SocketFactory){
         var data = {
-          track : {
-            title : 'Need sync',
-            artist : {
-              id : 0,
-              name : 'Need sync'
+          item : {
+            track : {
+              title : 'Need sync',
+              artist : {
+                id : 0,
+                name : 'Need sync'
+              }
             }
           },
           tracklist : {
             tracks : []
           }
-      };
+        };
         var vm   = this;
         vm.data = data;
         vm.next  = next;
@@ -31,6 +33,7 @@
         vm.volMute = volMute;
 
         SocketFactory.ping();
+        SocketFactory.needUpdatePlayer();
         SocketFactory.addTrackListener(onTrackChange);
         SocketFactory.addTrackListListener(onTrackListChange);
 
@@ -44,14 +47,14 @@
 
         function onTrackChange(track){
           // TODO update track
-          console.log(data);
-          data.track = track;
+          console.log(track);
+          data.item = track.msg;
         }
 
         function onTrackListChange(tracklist){
           // TODO update tracklist
-          console.log(data);
-          data.tracklist = tracklist;
+          console.log(tracklist);
+          data.tracklist = tracklist.msg;
         }
         function pause(){
             SocketFactory.musicPause(function onPause(err){

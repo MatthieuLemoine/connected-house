@@ -33,6 +33,11 @@
           afterLogin();
         }
 
+        function needUpdate(){
+            onTrackChange(DZ.player.getCurrentTrack());
+            onTrackListChange();
+        }
+
         function playerReady(response){
           // Subscribe to player events
           DZ.Event.subscribe('current_track', onTrackChange);
@@ -49,6 +54,7 @@
           SocketFactory.addVolDownListener(volDown);
           SocketFactory.addVolUpListener(volUp);
           SocketFactory.addVolMuteListener(volMute);
+          SocketFactory.addNeedUpdateListener(needUpdate);
         }
 
         function play(){
@@ -88,7 +94,7 @@
           DZ.player.setVolume(volume);
         }
 
-        function onTrackChange(track,evt_name){
+        function onTrackChange(track){
           console.log("Currently playing track", track);
           SocketFactory.send(TRACK_EVENT,track);
         }

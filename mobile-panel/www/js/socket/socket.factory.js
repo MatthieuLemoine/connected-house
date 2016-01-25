@@ -9,6 +9,7 @@
     function SocketFactory(socketFactory){
         var PING_EVENT  = 'connected-house.ping';
         // Music events
+        var NEED_UPDATE_EVENT = 'connected-house.music.needupdate';
         var NEXT_EVENT  = 'connected-house.music.next';
         var PAUSE_EVENT = 'connected-house.music.pause';
         var PLAY_EVENT  = 'connected-house.music.play';
@@ -39,6 +40,7 @@
             musicVolDown : musicVolDown,
             musicVolMute : musicVolMute,
             musicVolUp : musicVolUp,
+            needUpdatePlayer : needUpdatePlayer,
             ping : ping,
             send : send,
             sendWol : sendWol
@@ -135,6 +137,18 @@
                 VOL_UP_EVENT,
                 {
                     data : 'Vol up'
+                },
+                function(err){
+                    console.log(err);
+                }
+            );
+        }
+
+        function needUpdatePlayer(){
+            socket.emit(
+                NEED_UPDATE_EVENT,
+                {
+                    data : 'music need update'
                 },
                 function(err){
                     console.log(err);

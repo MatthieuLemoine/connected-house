@@ -8,6 +8,7 @@
 
     function SocketFactory(socketFactory){
         var PING_EVENT = 'connected-house.ping';
+        var NEED_UPDATE_EVENT = 'connected-house.music.needupdate';
         var NEXT_EVENT = 'connected-house.music.next';
         var PAUSE_EVENT = 'connected-house.music.pause';
         var PLAY_EVENT = 'connected-house.music.play';
@@ -24,6 +25,7 @@
 
 
         return {
+            addNeedUpdateListener : addNeedUpdateListener,
             addNextListener : addNextListener,
             addPlayListener : addPlayListener,
             addPauseListener : addPauseListener,
@@ -36,6 +38,10 @@
         };
 
         //////////
+
+        function addNeedUpdateListener(callback){
+            socket.addListener(NEED_UPDATE_EVENT,callback);
+        }
 
         function addNextListener(callback){
             socket.addListener(NEXT_EVENT,callback);

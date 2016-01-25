@@ -1,20 +1,22 @@
 <div ng-controller="MusicController as MusicVM">
   <div class="row">
-    <p> {{ MusicVM.data.track.title }} of {{ MusicVM.data.track.artist.name }} </p>
+    <p> {{ MusicVM.data.item.track.title }} of {{ MusicVM.data.item.track.artist.name }} </p>
   </div>
   <div class="row">
-    <md-button class="md-icon-button md-primary" ng-click="MusicVM.previous()">
-        <i class="material-icons">skip_previous</i>
-    </md-button>
-    <md-button class="md-icon-button md-primary" ng-click="MusicVM.play()">
-        <i class="material-icons">play_arrow</i>
-    </md-button>
-    <md-button class="md-icon-button md-primary" ng-click="MusicVM.pause()">
-        <i class="material-icons">pause</i>
-    </md-button>
-    <md-button class="md-icon-button md-primary" ng-click="MusicVM.next()">
-        <i class="material-icons">skip_next</i>
-    </md-button>
+      <md-button class="md-icon-button md-primary" ng-click="MusicVM.previous()">
+          <i class="material-icons">skip_previous</i>
+      </md-button>
+      <md-button class="md-icon-button md-primary" ng-click="MusicVM.play()">
+          <i class="material-icons">play_arrow</i>
+      </md-button>
+      <md-button class="md-icon-button md-primary" ng-click="MusicVM.pause()">
+          <i class="material-icons">pause</i>
+      </md-button>
+      <md-button class="md-icon-button md-primary" ng-click="MusicVM.next()">
+          <i class="material-icons">skip_next</i>
+      </md-button>
+    </div>
+  <div class="row">
     <md-button class="md-icon-button md-primary" ng-click="MusicVM.volUp()">
         <i class="material-icons">volume_up</i>
     </md-button>
@@ -28,8 +30,8 @@
   <div class="row">
     <md-list ng-cloak>
       <md-subheader class="md-no-sticky">Tracklist</md-subheader>
-      <md-list-item ng-repeat="track in MusicVM.data.tracklist.tracks">
-        <p> {{ MusicVM.data.track.title }} of {{ MusicVM.data.track.artist.name }} </p>
+      <md-list-item ng-repeat="track in MusicVM.data.tracklist">
+        <p> {{ track.artist.name }} : {{ track.title }} </p>
       </md-list-item>
     </md-list>
   </div>

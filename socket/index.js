@@ -16,6 +16,7 @@ const SUCCESS_WOL = APP_NAMESPACE + 'wol.success';
 // MUSIC EVENTS
 const MUSIC_NAMESPACE = APP_NAMESPACE + 'music.';
 const MUSIC_PLAYER_NAMESPACE = MUSIC_NAMESPACE + 'player.';
+const MUSIC_PLAYER_NEED_UPDATE = MUSIC_NAMESPACE + 'needupdate';
 const MUSIC_PLAYER_PLAY = MUSIC_NAMESPACE + 'play';
 const MUSIC_PLAYER_PAUSE = MUSIC_NAMESPACE + 'pause';
 const MUSIC_PLAYER_NEXT = MUSIC_NAMESPACE + 'next';
@@ -62,6 +63,9 @@ io.on('connection', function (socket) {
         });
       }
     }
+  });
+  socket.on(MUSIC_PLAYER_NEED_UPDATE,function(data){
+    socket.broadcast.emit(MUSIC_PLAYER_NEED_UPDATE,{ msg: 'Music need update' });
   });
   socket.on(MUSIC_PLAYER_PLAY,function(data){
     socket.broadcast.emit(MUSIC_PLAYER_PLAY,{ msg: 'Play music please' });
