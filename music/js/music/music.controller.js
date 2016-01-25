@@ -25,6 +25,7 @@
         }
 
         function changeTrack(data){
+            console.log('Need change received whith ',data);
             var tracklist = DZ.player.getTrackList().map(function(item){
                 return parseInt(item.id);
             });
@@ -111,9 +112,6 @@
 
         function onTrackListChange(){
           console.log("Track list has changed");
-          console.log(DZ.player.getTrackList().map(function(item){
-              return parseInt(item.id);
-          }));
           SocketFactory.send(TRACK_LIST_EVENT,DZ.player.getTrackList());
         }
     }
