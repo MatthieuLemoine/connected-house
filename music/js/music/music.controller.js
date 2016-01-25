@@ -25,11 +25,10 @@
         }
 
         function changeTrack(data){
-            console.log('Need change received whith ',data);
             var tracklist = DZ.player.getTrackList().map(function(item){
                 return parseInt(item.id);
             });
-            DZ.player.playTracks(tracklist,data.index);
+            DZ.player.playTracks(tracklist,data.msg.data.index);
         }
 
         function initDeezer(){
@@ -69,7 +68,6 @@
         }
 
         function play(){
-          console.log('play');
           DZ.player.play();
         }
 
@@ -106,12 +104,10 @@
         }
 
         function onTrackChange(track){
-          console.log("Currently playing track", track);
           SocketFactory.send(TRACK_EVENT,track);
         }
 
         function onTrackListChange(){
-          console.log("Track list has changed");
           SocketFactory.send(TRACK_LIST_EVENT,DZ.player.getTrackList());
         }
     }

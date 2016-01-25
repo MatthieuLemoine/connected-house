@@ -46,7 +46,6 @@ function handler (req, res) {
 io.on('connection', function (socket) {
   socket.emit(HELLO, { msg: 'Hello World !' });
   socket.on(PING, function (data) {
-    console.log('PING received');
   });
   socket.on(WOL,function(data){
     console.log('WOL received',data);

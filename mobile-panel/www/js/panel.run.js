@@ -38,7 +38,6 @@
               if(!ProgressFactory.opts.dialog.isShown){
                   ProgressFactory.showProgress('Uploading App','A new version of the Connected House is installing. Please wait...');
               }
-              console.log('Ionic Deploy: Progress... ', prog);
           });
       }
 
