@@ -43,7 +43,9 @@
         }
 
         function refreshStatus(){
+            console.log('Refresh');
             SocketFactory.ping();
+            return false;
         }
 
         function sendWol(){

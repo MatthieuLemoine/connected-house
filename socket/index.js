@@ -101,15 +101,18 @@ io.on('connection', function (socket) {
     socket.broadcast.emit(MUSIC_PLAYER_TRACKLIST,{ msg: data });
   });
   socket.on(PING_APPS,function(data){
+    console.log('Ping apps');
     // PING ALL APPS
     socket.broadcast.emit(PING_APPS,{ msg : data });
     // SOCKET ANSWER
     socket.broadcast.emit(PING_SOCKET,{ msg : data });
   });
   socket.on(PING_SOCKET,function(data){
+    console.log('Ping socket answer');
     socket.broadcast.emit(PING_SOCKET,{ msg : data });
   });
   socket.on(PING_MUSIC,function(data){
+    console.log('Ping music answer');
     socket.broadcast.emit(PING_MUSIC,{ msg : data });
   });
 });
