@@ -8,6 +8,7 @@
     HomeController.$inject = ['SocketFactory','Weather'];
 
     function HomeController(SocketFactory,Weather){
+        var PING_MUSIC_EVENT   = 'connected-house.ping.music';
         var data     = {
             apiKey :  Weather.openweather.apikey,
             apps : {
@@ -33,17 +34,18 @@
         vm.refreshStatus = refreshStatus;
 
         SocketFactory.addPingListener(onPingReceived);
+        refreshStatus();
 
         //////////
 
-        function onPingReceived(data,evt,err){
-            console.log(data);
-            console.log(evt);
-            console.log(err);
+        function onPingReceived(input){
+            data.apps.socket.status = true;
+            if( input.msg === PING_MUSIC_EVENT ){
+                data.apps.music.status = true;
+            }
         }
 
         function refreshStatus(){
-            console.log('Refresh');
             SocketFactory.ping();
             return false;
         }

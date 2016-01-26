@@ -10,7 +10,6 @@
         // Ping events
         var PING_EVENT         = 'connected-house.ping.apps';
         var PING_MUSIC_EVENT   = 'connected-house.ping.music';
-        var PING_SOCKET_EVENT  = 'connected-house.ping.socket';
         // Music events
         var CHANGE_TRACK_EVENT = 'connected-house.music.changetrack';
         var NEED_UPDATE_EVENT  = 'connected-house.music.needupdate';
@@ -54,7 +53,7 @@
 
         function addPingListener(callback){
             socket.addListener(PING_MUSIC_EVENT,callback);
-            socket.addListener(PING_SOCKET_EVENT,callback);
+            socket.addListener(PING_EVENT,callback);
         }
 
         function addTrackListListener(callback){

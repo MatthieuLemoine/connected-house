@@ -59,6 +59,10 @@
             socket.addListener(PAUSE_EVENT,callback);
         }
 
+        function addPingListener(callback){
+            socket.addListener(PING_EVENT,callback);
+        }
+
         function addPlayListener(callback){
             socket.addListener(PLAY_EVENT,callback);
         }

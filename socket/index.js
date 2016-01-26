@@ -12,7 +12,6 @@ const HELLO = APP_NAMESPACE + 'hello';
 // PING APPS EVENTS
 const PING_APPS = PING + '.apps';
 const PING_MUSIC = PING + '.music';
-const PING_SOCKET = PING + '.socket';
 // WOL EVENTS
 const WOL = APP_NAMESPACE + 'wol';
 const SUCCESS_WOL = APP_NAMESPACE + 'wol.success';
@@ -47,9 +46,6 @@ function handler (req, res) {
 }
 
 io.on('connection', function (socket) {
-  socket.emit(HELLO, { msg: 'Hello World !' });
-  socket.on(PING, function (data) {
-  });
   socket.on(WOL,function(data){
     console.log('WOL received',data);
     if(data.computer){
@@ -101,18 +97,10 @@ io.on('connection', function (socket) {
     socket.broadcast.emit(MUSIC_PLAYER_TRACKLIST,{ msg: data });
   });
   socket.on(PING_APPS,function(data){
-    console.log('Ping apps');
     // PING ALL APPS
-    socket.broadcast.emit(PING_APPS,{ msg : data });
-    // SOCKET ANSWER
-    socket.broadcast.emit(PING_SOCKET,{ msg : data });
-  });
-  socket.on(PING_SOCKET,function(data){
-    console.log('Ping socket answer');
-    socket.broadcast.emit(PING_SOCKET,{ msg : data });
+    io.sockets.emit(PING_APPS,{ msg : 'Ping' });
   });
   socket.on(PING_MUSIC,function(data){
-    console.log('Ping music answer');
-    socket.broadcast.emit(PING_MUSIC,{ msg : data });
+    socket.broadcast.emit(PING_MUSIC,{ msg : PING_MUSIC });
   });
 });
