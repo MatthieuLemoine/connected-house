@@ -13,9 +13,9 @@ var config = {
         './js/**/*.js'
     ],
     sass: './scss/**/*.scss',
-    css: './css/',
+    css: './public/css/',
     html: './**/*.html',
-    dest: './build/',
+    dest: './public/build/',
     minJs: 'app.min.js',
     fatJS: 'app.js'
 };
