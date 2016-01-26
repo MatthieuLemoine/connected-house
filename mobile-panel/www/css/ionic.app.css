@@ -9734,3 +9734,9 @@ md-toolbar div.md-toolbar-tools > h2 {
 
 .icon {
   font-size: 22px; }
+
+.status-up {
+  color: #1B5E20; }
+
+.status-down {
+  color: #B71C1C; }

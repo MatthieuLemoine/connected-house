@@ -7,7 +7,8 @@
     SocketFactory.$inject = ['socketFactory'];
 
     function SocketFactory(socketFactory){
-        var PING_EVENT         = 'connected-house.ping';
+        var PING_EVENT         = 'connected-house.ping.apps';
+        var PING_MUSIC_EVENT   = 'connected-house.ping.music';
         var CHANGE_TRACK_EVENT = 'connected-house.music.changetrack';
         var NEED_UPDATE_EVENT  = 'connected-house.music.needupdate';
         var NEXT_EVENT         = 'connected-house.music.next';
@@ -26,6 +27,7 @@
 
 
         return {
+            addPingListener        : addPingListener,
             addChangeTrackListener : addChangeTrackListener,
             addNeedUpdateListener  : addNeedUpdateListener,
             addNextListener        : addNextListener,
@@ -79,9 +81,9 @@
 
         function ping(){
             socket.emit(
-                PING_EVENT,
+                PING_MUSIC_EVENT,
                 {
-                    data : 'Hello from Music'
+                    data : 'Music app up'
                 },
                 function(err){
                     console.log(err);

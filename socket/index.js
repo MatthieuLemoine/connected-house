@@ -9,10 +9,13 @@ var conf = require('./conf');
 const APP_NAMESPACE = 'connected-house.';
 const PING = APP_NAMESPACE + 'ping';
 const HELLO = APP_NAMESPACE + 'hello';
-// Wake on lan event
+// PING APPS EVENTS
+const PING_APPS = PING + '.apps';
+const PING_MUSIC = PING + '.music';
+const PING_SOCKET = PING + '.socket';
+// WOL EVENTS
 const WOL = APP_NAMESPACE + 'wol';
 const SUCCESS_WOL = APP_NAMESPACE + 'wol.success';
-
 // MUSIC EVENTS
 const MUSIC_NAMESPACE = APP_NAMESPACE + 'music.';
 const MUSIC_PLAYER_NAMESPACE = MUSIC_NAMESPACE + 'player.';
@@ -96,5 +99,17 @@ io.on('connection', function (socket) {
   });
   socket.on(MUSIC_PLAYER_TRACKLIST,function(data){
     socket.broadcast.emit(MUSIC_PLAYER_TRACKLIST,{ msg: data });
+  });
+  socket.on(PING_APPS,function(data){
+    // PING ALL APPS
+    socket.broadcast.emit(PING_APPS,{ msg : data });
+    // SOCKET ANSWER
+    socket.broadcast.emit(PING_SOCKET,{ msg : data });
+  });
+  socket.on(PING_SOCKET,function(data){
+    socket.broadcast.emit(PING_SOCKET,{ msg : data });
+  });
+  socket.on(PING_MUSIC,function(data){
+    socket.broadcast.emit(PING_MUSIC,{ msg : data });
   });
 });

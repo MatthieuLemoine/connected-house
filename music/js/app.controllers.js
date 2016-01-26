@@ -5,11 +5,17 @@
         .module('app')
         .controller('AppController',AppController);
 
-    AppController.$inject = ['$location'];
+    AppController.$inject = ['$location','SocketFactory'];
 
-    function AppController($location){
+    function AppController($location,SocketFactory){
         var vm       = this;
 
+        SocketFactory.addPingListener(onPing);
+
         ////////////
+
+        function onPing(){
+            SocketFactory.ping();
+        }
     }
 })();

@@ -21,6 +21,30 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+// Material Colors
+$light:                           #fff;
+$stable:                          #f8f8f8;
+$positive-dark:                   #1A237E;
+$positive:                        #387ef5;
+$positive-light:                  #C5CAE9;
+$calm-dark:                       #0D47A1;
+$calm:                            #11c1f3;
+$calm-light:                      #BBDEFB;
+$balanced-dark:                   #1B5E20;
+$balanced:                        #33cd5f;
+$balanced-light:                  #C8E6C9;
+$energized-dark:                  #E65100;
+$energized:                       #ffc900;
+$energized-light:                 #FFE0B2;
+$assertive-dark:                  #B71C1C;
+$assertive:                       #ef473a;
+$assertive-light:                 #FFCDD2;
+$royal-dark:                      #311B92;
+$royal:                           #886aea;
+$royal-light:                     #D1C4E9;
+$dark:                            #444;
+
+
 .has-header{
   top: 65px;
 }
@@ -35,4 +59,10 @@ md-toolbar div.md-toolbar-tools > h2 {
 }
 .icon{
   font-size:22px;
+}
+.status-up{
+  color : $balanced-dark;
+}
+.status-down{
+  color : $assertive-dark;
 }

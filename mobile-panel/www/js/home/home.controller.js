@@ -8,26 +8,52 @@
     HomeController.$inject = ['SocketFactory','Weather'];
 
     function HomeController(SocketFactory,Weather){
+        var data     = {
+            apiKey :  Weather.openweather.apikey,
+            apps : {
+                socket : {
+                    name : 'Socket server',
+                    status : false
+                },
+                music : {
+                    name : 'Music player',
+                    status : false
+                }
+            },
+            wol :{
+                computer : {}
+            },
+            error : {
+                wol : {}
+            }
+        };
         var vm   = this;
+        vm.data = data;
         vm.sendWol = sendWol;
-        vm.error = {
-            wol: {}
-        };
-        vm.wol = {
-            computer : {}
-        };
-        vm.apiKey = Weather.openweather.apikey;
+        vm.refreshStatus = refreshStatus;
+
+        SocketFactory.addPingListener(onPingReceived);
 
         //////////
 
+        function onPingReceived(data,evt,err){
+            console.log(data);
+            console.log(evt);
+            console.log(err);
+        }
+
+        function refreshStatus(){
+            SocketFactory.ping();
+        }
+
         function sendWol(){
             console.log('sendWol');
-            if(vm.wol.computer.name){
-                SocketFactory.sendWol(vm.wol.computer.name);
-                vm.error.wol = {};
+            if(data.wol.computer.name){
+                SocketFactory.sendWol(data.wol.computer.name);
+                data.error.wol = {};
             }
             else{
-                vm.error.wol.required = 'Computer name is required';
+                data.error.wol.required = 'Computer name is required';
             }
         }
 

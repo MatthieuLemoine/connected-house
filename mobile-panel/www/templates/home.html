@@ -1,21 +1,69 @@
 <div ng-controller="HomeController as HomeVM">
-  <md-content layout-padding>
-    <section>
-      <md-subheader class="md-primary">Wake on LAN</md-subheader>
-      <md-input-container>
-        <label>Computer Name</label>
-        <input ng-model="HomeVM.wol.computer.name">
-        <div ng-messages="HomeVM.error.wol">
-          <div ng-message="required">This is required.</div>
-        </div>
-        <md-button class="md-raised md-primary" ng-click="HomeVM.sendWol()">
-            Play
-        </md-button>
-      </md-input-container>
-    </section>
-    <section>
-      <h1>Weather</h1>
-      <angular-weather city="Villeneuve d'Ascq" apikey="HomeVM.apiKey"></angular-weather>
-    </section>
+  <md-content class="md-padding" layout-xs="column" layout="row">
+
+    <!-- Left column -->
+    <div flex-xs flex-gt-xs="50" layout="column">
+      <!-- Apps status Widget -->
+      <md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Systems status</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <md-list ng-cloak>
+            <md-subheader class="md-no-sticky">Applications</md-subheader>
+            <md-list-item ng-repeat="app in HomeVM.data.apps">
+              <div class="md-list-item-text">
+                <i ng-if="app.status" class="icon ion-checkmark status-up"></i>
+                <i ng-if="!app.status" class="icon ion-close status-down"></i>
+                <span>{{ app.name }}</span>
+              </div>
+            </md-list-item>
+          </md-list>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class="md-primary" ng-click="HomeVM.refreshStatus()">
+              <i class="icon ion-android-refresh"></i>
+          </md-button>
+        </md-card-actions>
+      </md-card>
+      <!-- WOL Widget -->
+      <md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Wake on LAN</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <md-input-container>
+            <label>Computer Name</label>
+            <input ng-model="HomeVM.data.wol.computer.name">
+            <div ng-messages="HomeVM.data.error.wol">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class="md-primary" ng-click="HomeVM.sendWol()">
+              OK
+          </md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+
+    <!-- Right column -->
+    <div flex-xs flex-gt-xs="50" layout="column">
+      <!-- Weather Widget -->
+      <md-card>
+        <md-card-title-text>
+          <span class="md-headline">Weather</span>
+        </md-card-title-text>
+        <md-card-content layout-padding>
+          <angular-weather city="Villeneuve d'Ascq" apikey="HomeVM.data.apiKey"></angular-weather>
+        </md-card-content>
+      </md-card>
+    </div>
+
   </md-content>
 </div>

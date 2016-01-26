@@ -22,7 +22,7 @@
       deploy.watch().then(function() {}, function() {}, function(hasUpdate) {
           console.log('Watch update hasUpdate=',hasUpdate);
           if(hasUpdate){
-              //updateApp();
+              updateApp();
           }
       });
 
