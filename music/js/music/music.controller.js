@@ -13,6 +13,7 @@
         var vm   = this;
         vm.DeezerUser = DeezerUser;
 
+
         initDeezer();
 
         //////////

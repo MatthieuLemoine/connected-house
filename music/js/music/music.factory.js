@@ -21,9 +21,6 @@
                   appId : DeezerConf.app_id,
                   channelUrl : DeezerConf.channelUrl,
                   player: {
-                    container: 'player',
-                    width : 400,
-                    height : 100,
                     onload : callback
                   }
                 });
